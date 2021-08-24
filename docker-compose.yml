@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: ./docker-compose/php
+    environment:
+      - LANG=C.UTF-8
+      - TZ=Asia/Tokyo
