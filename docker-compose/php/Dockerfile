@@ -1,4 +1,4 @@
-FROM composer:2.1.5 AS composer
+FROM composer:2.1.6 AS composer
 FROM php:8.0.9-apache AS shared
 # user
 ARG USERNAME=app
@@ -6,6 +6,10 @@ ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 RUN groupadd --gid $USER_GID $USERNAME \
   && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
+# packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  git \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
 # PHP
 RUN apt-get update && apt-get install -y \
   libicu-dev \
@@ -55,10 +59,10 @@ CMD ["/usr/bin/supervisord"]
 FROM shared AS local
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 # Node.js
-RUN curl -o nodejs.deb https://deb.nodesource.com/node_16.x/pool/main/n/nodejs/nodejs_16.7.0-deb-1nodesource1_amd64.deb \
+RUN curl -o nodejs.deb https://deb.nodesource.com/node_16.x/pool/main/n/nodejs/nodejs_16.8.0-deb-1nodesource1_amd64.deb \
   && apt-get update && apt-get install -y ./nodejs.deb \
-  && rm nodejs.deb \
-  && rm -rf /var/lib/apt/lists/*
+  && rm ./nodejs.deb \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 #FROM composer AS build_composer
 #ENV APP_ENV laravel
