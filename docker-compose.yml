@@ -4,5 +4,15 @@ services:
     build:
       context: ./docker-compose/php
     environment:
+      - DATABASE_URL=pgsql://${APP_DB_USERNAME}:${APP_DB_PASSWORD}@db:5432/${APP_DB_DATABASE}?charset=utf8&prefix_indexes=true&schema=public&sslmode=prefer
       - LANG=C.UTF-8
+      - TZ=Asia/Tokyo
+  db:
+    image: postgres:13.4
+    environment:
+      - LANG=C.UTF-8
+      - POSTGRES_PASSWORD=${APP_DB_PASSWORD}
+      - POSTGRES_USER=${APP_DB_USERNAME}
+      - POSTGRES_DB=${APP_DB_DATABASE}
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --locale=C.UTF-8
       - TZ=Asia/Tokyo
