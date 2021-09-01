@@ -1,6 +1,7 @@
 <template>
     <p>ExampleComponent</p>
     <p>{{ test }}</p>
+    <router-view />
 </template>
 
 <script>
