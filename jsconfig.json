@@ -1,0 +1,5 @@
+{
+  "include": [
+    "./laravel/resources/js/**/*"
+  ]
+}
