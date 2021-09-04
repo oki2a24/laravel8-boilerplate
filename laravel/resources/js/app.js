@@ -1,22 +1,7 @@
 require('./bootstrap');
 
 import { createApp } from 'vue'
-import ExampleComponent from './components/ExampleComponent.vue'
+import App from './App.vue'
+import router from './router'
 
-const Home = { template: "<div>Home</div>" };
-const About = { template: "<div>About</div>" };
-const routes = [
-  { path: "/", component: Home },
-  { path: "/about", component: About },
-];
-import { createRouter, createWebHistory } from "vue-router";
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-});
-
-createApp({
-    components: {
-        ExampleComponent
-    }
-}).use(router).mount('#app')
+createApp(App).use(router).mount('#app')

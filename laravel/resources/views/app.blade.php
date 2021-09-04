@@ -12,7 +12,6 @@
       <strong>We're sorry but this app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app">
-      <example-component/>
     </div>
     <script src="{{ mix('/js/app.js') }}"></script>
   </body>
