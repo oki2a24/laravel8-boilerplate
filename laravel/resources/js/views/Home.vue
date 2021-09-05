@@ -1,12 +1,10 @@
 <template>
-    <h1>Home</h1>
+  <h1>Home</h1>
 </template>
 
 <script>
 export default {
-    setup() {
-
-    },
-    name: 'Home',
-}
+  name: "Home",
+  setup() {},
+};
 </script>
