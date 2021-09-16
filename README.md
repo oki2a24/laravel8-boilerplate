@@ -8,3 +8,23 @@ Laravel 8 を REATful API リソースサーバーとし、 Vue.js 3 を SPA フ
 cp .env.docker-compose_example .env
 docker-compose up -d
 ```
+
+## 開発
+### ユニットテスト
+```bash
+php artisan test
+```
+
+### 静的解析
+```bash
+vendor/bin/phpstan --memory-limit=-1
+
+npm run lint
+```
+
+### フォーマット
+```bash
+vendor/bin/php-cs-fixer fix
+
+npm run format
+```
