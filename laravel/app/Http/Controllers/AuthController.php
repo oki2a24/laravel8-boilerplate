@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\LoginRequest;
 use App\Http\Resources\UserResource;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -12,10 +12,10 @@ class AuthController extends Controller
     /**
      * ログインを試みます。
      *
-     * @param Request $request
+     * @param LoginRequest $request
      * @return UserResource
      */
-    public function login(Request $request): UserResource
+    public function login(LoginRequest $request): UserResource
     {
         $credentials = $request->only(['email', 'password']);
         if (Auth::attempt($credentials)) {
