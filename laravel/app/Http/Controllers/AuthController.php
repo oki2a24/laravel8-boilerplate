@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\LoginRequest;
 use App\Http\Resources\UserResource;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -25,5 +27,17 @@ class AuthController extends Controller
         throw ValidationException::withMessages([
             'email' => __('auth.failed'),
         ]);
+    }
+
+    /**
+     * ログアウトを試みます。
+     *
+     * @return JsonResponse
+     */
+    public function logout(): JsonResponse
+    {
+        Auth::logout();
+
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }
