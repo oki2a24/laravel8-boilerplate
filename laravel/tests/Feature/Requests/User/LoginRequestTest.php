@@ -3,9 +3,6 @@
 namespace Tests\Feature\Requests\User;
 
 use App\Http\Requests\User\LoginRequest;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Tests\TestCase;
@@ -26,7 +23,6 @@ class LoginRequestTest extends TestCase
         // 確認。成否
         $this->assertTrue($validator->fails());
         // 確認。失敗内容
-        //dump($validator->failed());
         $this->assertEquals($failedValidationRules, $validator->failed());
     }
 
