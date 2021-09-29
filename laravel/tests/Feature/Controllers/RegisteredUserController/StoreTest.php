@@ -3,7 +3,9 @@
 namespace Tests\Feature\Controllers\RegisteredUserController;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class StoreTest extends TestCase
@@ -16,6 +18,8 @@ class StoreTest extends TestCase
      */
     public function ユーザーを登録できること()
     {
+        Event::fake();
+
         $data = [
             'name' => 'テスト太郎',
             'email' => 'test@example.com',
@@ -34,5 +38,6 @@ class StoreTest extends TestCase
                 'email' => $data['email'],
             ]);
         $this->assertAuthenticatedAs($user);
+        Event::assertDispatched(Registered::class);
     }
 }
