@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmailVerificationNotificationController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\VerifyEmailController;
 use Illuminate\Http\Request;
@@ -22,6 +23,7 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::post('logout', [AuthController::class, 'logout']);
 Route::post('register', [RegisteredUserController::class, 'store']);
 Route::get('/email/verify/{id}/{hash}', VerifyEmailController::class)->middleware(['auth:sanctum', 'signed'])->name('verification.verify');
+Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->middleware(['auth:sanctum', 'throttle:6,1'])->name('verification.send');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
