@@ -3,8 +3,6 @@
 namespace Tests\Feature\Requests\PasswordResetLink;
 
 use App\Http\Requests\PasswordResetLink\StoreRequest;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Tests\TestCase;
