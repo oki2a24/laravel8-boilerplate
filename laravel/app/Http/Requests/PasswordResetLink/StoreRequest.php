@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|string|email:rfc,strict,spoof',
+            'email' => 'required|string|max:255|email:rfc,strict,spoof',
         ];
     }
 }

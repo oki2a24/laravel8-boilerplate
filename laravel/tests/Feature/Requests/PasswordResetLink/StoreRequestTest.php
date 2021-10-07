@@ -48,6 +48,14 @@ class StoreRequestTest extends TestCase
                     'email' => ['String' => [], 'Email' => ['rfc', 'strict', 'spoof']],
                 ],
             ],
+            '最大数エラーとなること' => [
+                [
+                    'email' => str_repeat('a', 256 - 12) . '@example.com',
+                ],
+                [
+                    'email' => ['Max' => [255], 'Email' => ['rfc', 'strict', 'spoof']],
+                ],
+            ],
             'emailフォーマットエラーとなること' => [
                 [
                     'email' => 'dame@@example.com',
