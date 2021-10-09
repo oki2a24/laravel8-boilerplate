@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmailVerificationNotificationController;
+use App\Http\Controllers\NewPasswordController;
 use App\Http\Controllers\PasswordResetLinkController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\VerifyEmailController;
@@ -26,7 +27,7 @@ Route::post('register', [RegisteredUserController::class, 'store']);
 Route::get('/email/verify/{id}/{hash}', VerifyEmailController::class)->middleware(['auth:sanctum', 'signed'])->name('verification.verify');
 Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->middleware(['auth:sanctum', 'throttle:6,1'])->name('verification.send');
 Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->middleware(['guest'])->name('password.email');
-Route::post('/reset-password', fn () => '')->name('password.reset'); // TODO password.email ルートを完成させるためのダミー
+Route::post('/reset-password', [NewPasswordController::class, 'store'])->middleware(['guest'])->name('password.reset');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
