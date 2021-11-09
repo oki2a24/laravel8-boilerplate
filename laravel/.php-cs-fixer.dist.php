@@ -14,6 +14,7 @@ return $config
         ->exclude('node_modules')
         ->exclude('storage/framework/views')
         ->exclude('vendor')
+        ->notPath('_ide_helper.php')
         ->in(__DIR__)
     )
 ;
