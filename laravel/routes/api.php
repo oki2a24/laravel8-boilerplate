@@ -5,6 +5,7 @@ use App\Http\Controllers\EmailVerificationNotificationController;
 use App\Http\Controllers\NewPasswordController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PasswordResetLinkController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileInformationController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\VerifyEmailController;
@@ -32,10 +33,7 @@ Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->
 Route::post('/reset-password', [NewPasswordController::class, 'store'])->middleware(['guest'])->name('password.reset');
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', [ProfileController::class, 'show'])->name('user.show');
     Route::put('/user/password', [PasswordController::class, 'update'])->name('user-password.update');
     Route::put('/user/profile-information', [ProfileInformationController::class, 'update'])->name('user-profile-information.update');
-});
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
 });
