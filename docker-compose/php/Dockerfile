@@ -1,5 +1,5 @@
-FROM composer:2.1.6 AS composer
-FROM php:8.0.9-apache AS shared
+FROM composer:2.1.14 AS composer
+FROM php:8.1.0-apache AS shared
 # user
 ARG USERNAME=app
 ARG USER_UID=1000
