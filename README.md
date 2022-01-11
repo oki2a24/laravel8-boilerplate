@@ -2,13 +2,17 @@
 Laravel 8 を REATful API リソースサーバーとしたアプリの雛形です。
 
 ## TODO
-- [ ] Docker イメージに属するファイルは、そのイメージのディレクトリ下に移動する。
 - [ ] Vue.js 3 を SPA フロントエンドとしたアプリの雛形にする。
 
 ## 開発環境のセットアップ
 ```bash
 cp .env.docker-compose_example .env
 docker-compose up -d
+
+docker-compose exec --user=app app bash
+cd laravel/
+composer install
+php artisan migrate
 ```
 
 ## 開発
