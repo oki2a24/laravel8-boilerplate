@@ -28,12 +28,14 @@
 		"onecentlin.laravel-extension-pack",
 		"mhutchie.git-graph",
 		"oderwat.indent-rainbow",
-		"eamodio.gitlens"
+		"eamodio.gitlens",
+		"xdebug.php-debug"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
+    "forwardPorts": [                   
+        9003 // xdebug.iniに書いたport番号と同じにする
+    ],
 	// Uncomment the next line if you want start specific services in your Docker Compose config.
 	// "runServices": [],
 

@@ -63,6 +63,10 @@ RUN curl -o nodejs.deb https://deb.nodesource.com/node_16.x/pool/main/n/nodejs/n
   && apt-get update && apt-get install -y ./nodejs.deb \
   && rm ./nodejs.deb \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
+# PHP Xdebug
+RUN pecl install xdebug-3.1.3 \
+  && docker-php-ext-enable xdebug 
+COPY ./php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 #FROM composer AS build_composer
 #ENV APP_ENV laravel
