@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   git \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 # PHP
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
   libicu-dev \
   libjpeg-dev \
   libpng-dev \
@@ -60,7 +60,7 @@ FROM shared AS local
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 # Node.js
 RUN curl -o nodejs.deb https://deb.nodesource.com/node_16.x/pool/main/n/nodejs/nodejs_16.13.2-deb-1nodesource1_amd64.deb \
-  && apt-get update && apt-get install -y ./nodejs.deb \
+  && apt-get update && apt-get install -y --no-install-recommends ./nodejs.deb \
   && rm ./nodejs.deb \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
