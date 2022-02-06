@@ -48,7 +48,7 @@ ENV APP_ENV laravel
 # Supervisor
 RUN apt-get update && apt-get install -y --no-install-recommends \
   busybox-static \
-  supervisor \
+  supervisor=4.2.2-2 \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /var/log/supervisor
 COPY ./supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
