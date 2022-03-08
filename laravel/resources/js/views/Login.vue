@@ -1,13 +1,11 @@
 <template>
   <main class="form-signin">
     <form>
-      <img
-        class="mb-4"
-        src="/docs/5.0/assets/brand/bootstrap-logo.svg"
-        alt=""
-        width="72"
-        height="57"
-      />
+      <i
+        class="bi bi-bootstrap-fill"
+        alt="Bootstrap"
+        style="font-size: 4rem; color: #7010f4"
+      ></i>
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
       <div class="form-floating">
