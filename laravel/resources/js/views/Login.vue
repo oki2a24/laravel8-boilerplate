@@ -1,5 +1,5 @@
 <template>
-  <main class="form-signin">
+  <main class="text-center form-signin">
     <form>
       <i
         class="bi bi-bootstrap-fill"
