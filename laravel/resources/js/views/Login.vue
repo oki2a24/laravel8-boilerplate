@@ -1,6 +1,6 @@
 <template>
   <main class="text-center form-signin">
-    <form>
+    <form @submit.prevent="login">
       <i
         class="bi bi-bootstrap-fill"
         alt="Bootstrap"
@@ -11,19 +11,31 @@
       <div class="form-floating">
         <input
           id="floatingInput"
+          v-model="credential.email"
           type="email"
           class="form-control"
+          :class="{ 'is-invalid': isInvalid('email') }"
           placeholder="name@example.com"
+          aria-describedby="floatingInputFeedback"
         />
+        <div id="floatingInputFeedback" class="invalid-feedback">
+          {{ invalidFeedbackMessage("email") }}
+        </div>
         <label for="floatingInput">Email address</label>
       </div>
       <div class="form-floating">
         <input
           id="floatingPassword"
+          v-model="credential.password"
           type="password"
           class="form-control"
+          :class="{ 'is-invalid': isInvalid('password') }"
           placeholder="Password"
+          aria-describedby="floatingPasswordFeedback"
         />
+        <div id="floatingPasswordFeedback" class="invalid-feedback">
+          {{ invalidFeedbackMessage("password") }}
+        </div>
         <label for="floatingPassword">Password</label>
       </div>
 
@@ -41,9 +53,35 @@
 </template>
 
 <script>
+import { computed } from "@vue/runtime-core";
+import { reactive } from "@vue/reactivity";
+import { useStore } from "vuex";
+
 export default {
   name: "Login",
-  setup() {},
+  setup() {
+    const store = useStore();
+
+    const credential = reactive({
+      email: "",
+      password: "",
+    });
+
+    const login = async () => {
+      await store.dispatch("auth/login", credential);
+    };
+    const isInvalid = computed(() => store.getters["auth/isInvalid"]);
+    const invalidFeedbackMessage = computed(
+      () => store.getters["auth/invalidFeedbackMessage"]
+    );
+
+    return {
+      credential,
+      invalidFeedbackMessage,
+      isInvalid,
+      login,
+    };
+  },
 };
 </script>
 
