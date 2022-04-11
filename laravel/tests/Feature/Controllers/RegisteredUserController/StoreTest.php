@@ -27,7 +27,7 @@ class StoreTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        $response = $this->post('/api/register', $data);
+        $response = $this->postJson('/api/register', $data);
 
         $user = User::first();
         $response
