@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/health', fn () => ["status" => 200])->name('health');
+
 // 認証
 Route::post('login', [AuthenticatedSessionController::class, 'login'])->middleware(['guest'])->name('login');
 Route::post('logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
