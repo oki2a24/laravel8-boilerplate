@@ -1,6 +1,7 @@
 import axios from "../../api/axios";
 
 const state = {
+  data: {},
   error: {},
 };
 
@@ -14,14 +15,20 @@ const getters = {
       return `${pre} ${cur}`;
     }, "");
   },
+  isLoggedIn: (state) => {
+    return Object.keys(state.data).length > 0;
+  },
 };
 
 const actions = {
-  async login({ commit }, credential) {
-    axios
+  async login({ dispatch, commit }, credential) {
+    await axios
       .get("/sanctum/csrf-cookie")
       .then(() => {
         return axios.post("api/login", credential);
+      })
+      .then(() => {
+        return dispatch("getUser");
       })
       .then(() => {
         commit("setError", {});
@@ -30,8 +37,16 @@ const actions = {
         commit("setError", error.response.data);
       });
   },
+  async getUser({ commit }) {
+    await axios.get("api/user").then((response) => {
+      commit("setData", response.data);
+    });
+  },
 };
 const mutations = {
+  setData(state, data) {
+    state.data = data;
+  },
   setError(state, data) {
     state.error = data;
   },

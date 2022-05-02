@@ -55,11 +55,13 @@
 <script>
 import { computed } from "@vue/runtime-core";
 import { reactive } from "@vue/reactivity";
+import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
 export default {
   name: "Login",
   setup() {
+    const router = useRouter();
     const store = useStore();
 
     const credential = reactive({
@@ -69,6 +71,9 @@ export default {
 
     const login = async () => {
       await store.dispatch("auth/login", credential);
+      if (store.getters["auth/isInvalid"]) {
+        router.push({ name: "Dashboard" });
+      }
     };
     const isInvalid = computed(() => store.getters["auth/isInvalid"]);
     const invalidFeedbackMessage = computed(
