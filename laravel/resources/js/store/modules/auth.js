@@ -37,6 +37,17 @@ const actions = {
         commit("setError", error.response.data);
       });
   },
+  async logout({ commit }) {
+    await axios
+      .post("/api/logout")
+      .then(() => {
+        commit("setData", {});
+        commit("setError", {});
+      })
+      .catch((error) => {
+        commit("setError", error.response.data);
+      });
+  },
   async getUser({ commit }) {
     await axios.get("api/user").then((response) => {
       commit("setData", response.data);

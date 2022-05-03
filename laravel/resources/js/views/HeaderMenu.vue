@@ -35,11 +35,23 @@
 </template>
 
 <script>
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+
 export default {
   name: "HeaderMenu",
   setup() {
-    const logout = () => {
-      console.log("logout start.");
+    const router = useRouter();
+    const store = useStore();
+
+    const logout = async () => {
+      await store.dispatch("auth/logout");
+      if (store.getters["auth/isInvalid"]) {
+        router.push({ name: "Login" });
+      } else {
+        // エラー時の処理を行う予定がないため、簡易的にブラウザ側で出力
+        console.warn(store.state.auth.error);
+      }
     };
 
     return { logout };
