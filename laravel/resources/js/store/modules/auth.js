@@ -53,6 +53,12 @@ const actions = {
       commit("setData", response.data);
     });
   },
+  getUserIfNeeded({ dispatch, getters }) {
+    if (getters["isLoggedIn"]) {
+      return;
+    }
+    dispatch("getUser");
+  },
 };
 const mutations = {
   setData(state, data) {

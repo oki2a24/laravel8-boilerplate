@@ -44,6 +44,9 @@ export default {
     const router = useRouter();
     const store = useStore();
 
+    // ページリロード時にログイン状態を保持するために実行
+    store.dispatch("auth/getUserIfNeeded");
+
     const logout = async () => {
       await store.dispatch("auth/logout");
       if (store.getters["auth/isInvalid"]) {
