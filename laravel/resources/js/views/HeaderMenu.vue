@@ -2,13 +2,16 @@
   <header
     class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
   >
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 py-0" href="#">
+    <router-link
+      :to="{ name: 'Dashboard' }"
+      class="navbar-brand col-md-3 col-lg-2 me-0 px-3 py-0"
+    >
       <i
         class="bi bi-bootstrap-fill"
         alt="Bootstrap"
         style="font-size: 2.3rem; color: #7010f4"
       />
-    </a>
+    </router-link>
     <button
       class="navbar-toggler position-absolute d-md-none collapsed"
       type="button"
