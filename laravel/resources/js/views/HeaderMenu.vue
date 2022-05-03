@@ -2,9 +2,13 @@
   <header
     class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
   >
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"
-      >Company name</a
-    >
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 py-0" href="#">
+      <i
+        class="bi bi-bootstrap-fill"
+        alt="Bootstrap"
+        style="font-size: 2.3rem; color: #7010f4"
+      />
+    </a>
     <button
       class="navbar-toggler position-absolute d-md-none collapsed"
       type="button"
@@ -16,15 +20,10 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <input
-      class="form-control form-control-dark w-100"
-      type="text"
-      placeholder="Search"
-      aria-label="Search"
-    />
+
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#">Sign out</a>
+        <a class="nav-link" href="#"><i class="bi bi-box-arrow-right" /> ログアウト</a>
       </li>
     </ul>
   </header>
@@ -59,16 +58,5 @@ export default {
   padding: 0.75rem 1rem;
   border-width: 0;
   border-radius: 0;
-}
-
-.form-control-dark {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.form-control-dark:focus {
-  border-color: transparent;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
 }
 </style>
