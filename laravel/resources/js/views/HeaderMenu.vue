@@ -26,7 +26,9 @@
 
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#"><i class="bi bi-box-arrow-right" /> ログアウト</a>
+        <button type="button" class="nav-link btn btn-link" @click="logout">
+          <i class="bi bi-box-arrow-right" /> ログアウト
+        </button>
       </li>
     </ul>
   </header>
@@ -35,7 +37,13 @@
 <script>
 export default {
   name: "HeaderMenu",
-  setup() {},
+  setup() {
+    const logout = () => {
+      console.log("logout start.");
+    };
+
+    return { logout };
+  },
 };
 </script>
 
