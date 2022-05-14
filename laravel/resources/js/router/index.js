@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HeaderMenuSidebarMenu from "../views/HeaderMenuSidebarMenu.vue";
+import Container from "../views/Container.vue";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import UsersIndex from "../views/users/Index.vue";
@@ -9,7 +9,7 @@ const routes = [
   { path: "/login", name: "Login", component: Login },
   {
     path: "",
-    component: HeaderMenuSidebarMenu,
+    component: Container,
     children: [
       { path: "/dashboard", name: "Dashboard", component: UsersIndex },
       { path: "/users", name: "UsersIndex", component: UsersIndex },
