@@ -3,9 +3,12 @@
 
   <div class="container-fluid">
     <div class="row">
+      <!-- ヘッダー、サイドメニュー、コンテンツ、各部分の幅等についてお互いに関係しあっているので、パーツごとに分離するのは筋が悪いように思える -->
+      <!-- このファイルは Container.vue などと改名すると良さそう -->
+      <!-- サイドメニューの無いページはありそうなので、ヘッダーはパーツ化したままで良さそう -->
       <sidebar-menu />
 
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <main class="col-11 ms-auto">
         <router-view />
       </main>
     </div>

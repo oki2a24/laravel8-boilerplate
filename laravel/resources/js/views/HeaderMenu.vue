@@ -4,7 +4,7 @@
   >
     <router-link
       :to="{ name: 'Dashboard' }"
-      class="navbar-brand col-md-3 col-lg-2 me-0 px-3 py-0"
+      class="navbar-brand col-md-auto col-lg-auto me-0 px-3 py-0"
     >
       <i
         class="bi bi-bootstrap-fill"
