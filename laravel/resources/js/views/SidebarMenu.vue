@@ -1,5 +1,11 @@
 <template>
-  <nav id="sidebarMenu" class="col-auto d-md-block bg-light sidebar collapse">
+  <!-- TODO サイドバー。スマホの時の挙動をどうするか? -->
+  <!-- サイドバー -->
+  <nav
+    id="sidebarMenu"
+    class="col-auto d-md-block bg-light sidebar collapse"
+    @mouseover="showOffcanvas"
+  >
     <div class="position-sticky pt-3">
       <ul class="nav flex-column">
         <li class="nav-item">
@@ -15,12 +21,90 @@
       </ul>
     </div>
   </nav>
+
+  <!-- TODO オフキャンバス。スマホの時の挙動をどうするか? -->
+  <!-- オフキャンバス -->
+  <div
+    id="sidebarMenuOffcanvas"
+    ref="offcanvasElement"
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    aria-labelledby="sidebarMenuOffcanvasLabel"
+    @mouseleave="hideOffcanvas"
+  >
+    <div class="offcanvas-header">
+      <h5 id="sidebarMenuOffcanvasLabel" class="offcanvas-title">メニュー</h5>
+      <button
+        type="button"
+        class="btn-close text-reset"
+        data-bs-dismiss="offcanvas"
+        aria-label="閉じる"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">
+            <i class="bi bi-house-door"></i> ダッシュボード
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="bi bi-people"></i> ユーザー
+          </a>
+        </li>
+      </ul>
+
+      <div>プレースホルダとしてのテキスト。...</div>
+
+      <div class="dropdown mt-3">
+        <button
+          id="dropdownMenuButton"
+          type="button"
+          class="btn btn-secondary dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          ドロップダウン
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" href="#">メニュー1</a></li>
+          <li><a class="dropdown-item" href="#">メニュー2</a></li>
+          <li><a class="dropdown-item" href="#">メニュー3</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import { onMounted, ref } from "vue";
+import { Offcanvas } from "bootstrap";
+
 export default {
   name: "SidebarMenu",
-  setup() {},
+  setup() {
+    const offcanvasElement = ref(null);
+    let bsOffcanvas = null;
+
+    onMounted(() => {
+      bsOffcanvas = new Offcanvas(offcanvasElement.value);
+    });
+
+    const showOffcanvas = () => {
+      bsOffcanvas.show();
+    };
+
+    const hideOffcanvas = () => {
+      bsOffcanvas.hide();
+    };
+
+    return {
+      hideOffcanvas,
+      offcanvasElement,
+      showOffcanvas,
+    };
+  },
 };
 </script>
 
