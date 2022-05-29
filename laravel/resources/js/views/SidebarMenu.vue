@@ -9,14 +9,20 @@
     <div class="position-sticky pt-3">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">
-            <i class="bi bi-house-door"></i>
-          </a>
+          <router-link
+            class="nav-link"
+            :to="{ name: 'Dashboard' }"
+            :exact-active-class="'active'"
+            ><i class="bi bi-house-door"></i
+          ></router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="bi bi-people"></i>
-          </a>
+          <router-link
+            class="nav-link"
+            :to="{ name: 'UsersIndex' }"
+            :exact-active-class="'active'"
+            ><i class="bi bi-people"></i
+          ></router-link>
         </li>
       </ul>
     </div>
@@ -33,6 +39,11 @@
     @mouseleave="hideOffcanvas"
   >
     <div class="offcanvas-header">
+      <i
+        class="bi bi-bootstrap-fill"
+        alt="Bootstrap"
+        style="font-size: 2.3rem; color: #7010f4"
+      />
       <h5 id="sidebarMenuOffcanvasLabel" class="offcanvas-title">メニュー</h5>
       <button
         type="button"
@@ -44,35 +55,22 @@
     <div class="offcanvas-body">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">
-            <i class="bi bi-house-door"></i> ダッシュボード
-          </a>
+          <router-link
+            class="nav-link"
+            :to="{ name: 'Dashboard' }"
+            :exact-active-class="'active'"
+            ><i class="bi bi-house-door"></i> ダッシュボード</router-link
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="bi bi-people"></i> ユーザー
-          </a>
+          <router-link
+            class="nav-link"
+            :to="{ name: 'UsersIndex' }"
+            :exact-active-class="'active'"
+            ><i class="bi bi-people"></i> ユーザー</router-link
+          >
         </li>
       </ul>
-
-      <div>プレースホルダとしてのテキスト。...</div>
-
-      <div class="dropdown mt-3">
-        <button
-          id="dropdownMenuButton"
-          type="button"
-          class="btn btn-secondary dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          ドロップダウン
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li><a class="dropdown-item" href="#">メニュー1</a></li>
-          <li><a class="dropdown-item" href="#">メニュー2</a></li>
-          <li><a class="dropdown-item" href="#">メニュー3</a></li>
-        </ul>
-      </div>
     </div>
   </div>
 </template>
@@ -164,5 +162,17 @@ export default {
 .sidebar-heading {
   font-size: 0.75rem;
   text-transform: uppercase;
+}
+
+/*
+ * オフキャンバス
+ */
+.offcanvas-body .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.offcanvas-body .nav-link.active {
+  color: #007bff;
 }
 </style>
