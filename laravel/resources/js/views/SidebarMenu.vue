@@ -145,7 +145,7 @@ export default {
   color: #333;
 }
 
-.sidebar .nav-link .feather {
+.sidebar .nav-link .bi {
   margin-right: 4px;
   color: #727272;
 }
@@ -154,8 +154,8 @@ export default {
   color: #007bff;
 }
 
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
+.sidebar .nav-link:hover .bi,
+.sidebar .nav-link.active .bi {
   color: inherit;
 }
 
@@ -172,7 +172,17 @@ export default {
   color: #333;
 }
 
+.offcanvas-body .nav-link .bi {
+  margin-right: 4px;
+  color: #727272;
+}
+
 .offcanvas-body .nav-link.active {
   color: #007bff;
+}
+
+.offcanvas-body .nav-link:hover .bi,
+.offcanvas-body .nav-link.active .bi {
+  color: inherit;
 }
 </style>
