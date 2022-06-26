@@ -39,7 +39,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              あなた
+              {{ user.name }}
             </a>
             <ul
               class="dropdown-menu dropdown-menu-end"
@@ -68,6 +68,7 @@
 </template>
 
 <script>
+import { computed } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
@@ -76,6 +77,8 @@ export default {
   setup() {
     const router = useRouter();
     const store = useStore();
+
+    const user = computed(() => store.getters["auth/user"]);
 
     // ページリロード時にログイン状態を保持するために実行
     store.dispatch("auth/getUserIfNeeded");
@@ -90,7 +93,7 @@ export default {
       }
     };
 
-    return { logout };
+    return { logout, user };
   },
 };
 </script>

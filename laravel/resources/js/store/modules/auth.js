@@ -18,6 +18,9 @@ const getters = {
   isLoggedIn: (state) => {
     return Object.keys(state.data).length > 0;
   },
+  user: (state) => {
+    return state.data;
+  },
 };
 
 const actions = {
