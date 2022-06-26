@@ -1,36 +1,69 @@
 <template>
   <header
-    class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
+    class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
   >
-    <router-link
-      :to="{ name: 'Dashboard' }"
-      class="navbar-brand col-md-auto col-lg-auto me-0 px-3 py-0"
-    >
-      <i
-        class="bi bi-bootstrap-fill"
-        alt="Bootstrap"
-        style="font-size: 2.3rem; color: #7010f4"
-      />
-    </router-link>
-    <button
-      class="navbar-toggler position-absolute d-md-none collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#sidebarMenu"
-      aria-controls="sidebarMenu"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container-fluid ps-0">
+      <router-link
+        :to="{ name: 'Dashboard' }"
+        class="navbar-brand col-md-auto col-lg-auto me-0 px-3 py-0"
+      >
+        <i
+          class="bi bi-bootstrap-fill"
+          alt="Bootstrap"
+          style="font-size: 2.3rem; color: #7010f4"
+        />
+      </router-link>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <button type="button" class="nav-link btn btn-link" @click="logout">
-          <i class="bi bi-box-arrow-right" /> ログアウト
-        </button>
-      </li>
-    </ul>
+      <div
+        id="navbarNavDropdown"
+        class="collapse navbar-collapse justify-content-end"
+      >
+        <ul class="navbar-nav px-3">
+          <li class="nav-item dropdown">
+            <a
+              id="navbarDropdownMenuLink"
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              あなた
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+              <li>
+                <a class="dropdown-item" href="#"
+                  ><i class="bi bi-person"></i> プロフィール</a
+                >
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown-item btn btn-link"
+                  @click="logout"
+                >
+                  <i class="bi bi-box-arrow-right" /> ログアウト
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
   </header>
 </template>
 
@@ -78,11 +111,5 @@ export default {
 .navbar .navbar-toggler {
   top: 0.25rem;
   right: 1rem;
-}
-
-.navbar .form-control {
-  padding: 0.75rem 1rem;
-  border-width: 0;
-  border-radius: 0;
 }
 </style>
