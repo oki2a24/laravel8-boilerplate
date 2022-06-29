@@ -3,12 +3,24 @@
 
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">概要</a>
+      <router-link
+        :to="{ name: 'ProfileShowGeneral' }"
+        :exact-active-class="'active'"
+        class="nav-link"
+        >概要</router-link
+      >
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">パスワード</a>
+      <router-link
+        :to="{ name: 'ProfileShowPassword' }"
+        :exact-active-class="'active'"
+        class="nav-link"
+        >パスワード</router-link
+      >
     </li>
   </ul>
+
+  <router-view />
 </template>
 
 <script>
