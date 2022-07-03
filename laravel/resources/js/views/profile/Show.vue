@@ -1,7 +1,7 @@
 <template>
-  <h1>プロフィール</h1>
+  <h1 class="mb-3">プロフィール</h1>
 
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs mb-5">
     <li class="nav-item">
       <router-link
         :to="{ name: 'ProfileShowGeneral' }"

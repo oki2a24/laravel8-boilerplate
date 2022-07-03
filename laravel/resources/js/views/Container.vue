@@ -7,7 +7,7 @@
       <!-- サイドメニューの無いページはありそうなので、ヘッダーはパーツ化したままで良さそう -->
       <sidebar-menu />
 
-      <main class="col-11 ms-auto">
+      <main class="col-11 ms-auto pt-3">
         <router-view />
       </main>
     </div>
