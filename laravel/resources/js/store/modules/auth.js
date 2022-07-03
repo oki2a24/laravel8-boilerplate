@@ -56,11 +56,11 @@ const actions = {
       commit("setData", response.data);
     });
   },
-  getUserIfNeeded({ dispatch, getters }) {
+  async getUserIfNeeded({ dispatch, getters }) {
     if (getters["isLoggedIn"]) {
       return;
     }
-    dispatch("getUser");
+    await dispatch("getUser");
   },
 };
 const mutations = {
