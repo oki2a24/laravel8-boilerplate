@@ -4,6 +4,7 @@ services:
     build:
       context: ./docker-compose/php
     environment:
+      - APP_AXIOS_BASEURL=${APP_AXIOS_BASEURL}
       - DATABASE_URL=pgsql://${APP_DB_USERNAME}:${APP_DB_PASSWORD}@db:5432/${APP_DB_DATABASE}?charset=utf8&prefix_indexes=true&schema=public&sslmode=prefer
       - LANG=C.UTF-8
       - TZ=Asia/Tokyo
