@@ -46,7 +46,9 @@
               aria-labelledby="navbarDropdownMenuLink"
             >
               <li>
-                <router-link :to="{ name: 'ProfileShow' }" class="dropdown-item"
+                <router-link
+                  :to="{ name: 'ProfileShowGeneral' }"
+                  class="dropdown-item"
                   ><i class="bi bi-person"></i> プロフィール</router-link
                 >
               </li>
