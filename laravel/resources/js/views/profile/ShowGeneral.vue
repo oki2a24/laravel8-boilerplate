@@ -11,22 +11,34 @@
       <span class="form-control-plaintext">{{ profile.email }}</span>
     </div>
   </div>
+  <div class="mb-3 row">
+    <button type="button" class="btn btn-primary col-auto" @click="goEdit">
+      編集
+    </button>
+  </div>
 </template>
 
 <script>
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
 export default {
   name: "ProfileShowGeneral",
   setup() {
+    const router = useRouter();
     const store = useStore();
 
-    // プロフィール
+    // プロフィール情報
     const profile = computed(() => store.getters["profile/data"]);
     store.dispatch("profile/getIfNeeded");
 
-    return { profile };
+    // 編集ページへ移動
+    const goEdit = () => {
+      router.push({ name: "ProfileEditGeneral" });
+    };
+
+    return { goEdit, profile };
   },
 };
 </script>
