@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Container from "../views/Container.vue";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
-import ProfileShow from "../views/profile/Show.vue";
+import ProfileTab from "../views/profile/Tab.vue";
 import ProfileEditGeneral from "../views/profile/EditGeneral.vue";
 import ProfileShowGeneral from "../views/profile/ShowGeneral.vue";
 import ProfileShowPassword from "../views/profile/ShowPassword.vue";
@@ -18,8 +18,8 @@ const routes = [
       { path: "/dashboard", name: "Dashboard", component: UsersIndex },
       {
         path: "/profile",
-        name: "ProfileShow",
-        component: ProfileShow,
+        name: "ProfileTab",
+        component: ProfileTab,
         children: [
           {
             path: "",
