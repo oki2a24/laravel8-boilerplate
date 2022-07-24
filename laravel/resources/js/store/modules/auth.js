@@ -18,9 +18,6 @@ const getters = {
   isLoggedIn: (state) => {
     return Object.keys(state.data).length > 0;
   },
-  user: (state) => {
-    return state.data;
-  },
 };
 
 const actions = {
@@ -55,12 +52,6 @@ const actions = {
     await axios.get("api/user").then((response) => {
       commit("setData", response.data);
     });
-  },
-  async getUserIfNeeded({ dispatch, getters }) {
-    if (getters["isLoggedIn"]) {
-      return;
-    }
-    await dispatch("getUser");
   },
 };
 const mutations = {

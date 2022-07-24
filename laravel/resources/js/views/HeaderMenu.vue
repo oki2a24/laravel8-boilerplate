@@ -39,7 +39,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              {{ user.name }}
+              {{ profile.name }}
             </a>
             <ul
               class="dropdown-menu dropdown-menu-end"
@@ -80,10 +80,10 @@ export default {
     const router = useRouter();
     const store = useStore();
 
-    const user = computed(() => store.getters["auth/user"]);
+    const profile = computed(() => store.getters["profile/data"]);
 
     // ページリロード時にログイン状態を保持するために実行
-    store.dispatch("auth/getUserIfNeeded");
+    store.dispatch("profile/getIfNeeded");
 
     const logout = async () => {
       await store.dispatch("auth/logout");
@@ -95,7 +95,7 @@ export default {
       }
     };
 
-    return { logout, user };
+    return { logout, profile };
   },
 };
 </script>
