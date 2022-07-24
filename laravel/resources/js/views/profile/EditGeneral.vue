@@ -1,6 +1,4 @@
 <template>
-  <h1>プロフィール概要編集</h1>
-
   <div class="row mb-3">
     <label for="name" class="col-sm-2 col-form-label">名前</label>
     <div class="col-sm-10">
@@ -9,7 +7,11 @@
         v-model="profile.name"
         type="text"
         class="form-control"
+        :class="invalidClassValue('name')"
       />
+      <div id="name" class="invalid-feedback">
+        {{ invalidFeedbackMessage("name") }}
+      </div>
     </div>
   </div>
   <div class="row mb-3">
@@ -20,7 +22,11 @@
         v-model="profile.email"
         type="email"
         class="form-control"
+        :class="invalidClassValue('email')"
       />
+      <div id="name" class="invalid-feedback">
+        {{ invalidFeedbackMessage("email") }}
+      </div>
     </div>
   </div>
   <div class="mb-3 row">
@@ -31,12 +37,14 @@
 </template>
 
 <script>
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
+import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
 export default {
   name: "EditGeneral",
   setup() {
+    const router = useRouter();
     const store = useStore();
 
     // プロフィール情報
@@ -47,9 +55,21 @@ export default {
     });
 
     // 更新
-    const update = () => {
-      console.log("update start!!!!!!");
+    const update = async () => {
+      await store.dispatch("profile/update", profile);
+
+      if (store.getters["profile/hasInvalid"]) {
+        return;
+      }
+
+      router.push({ name: "ProfileShowGeneral" });
     };
+    const invalidClassValue = computed(
+      () => store.getters["profile/invalidClassValue"]
+    );
+    const invalidFeedbackMessage = computed(
+      () => store.getters["profile/invalidFeedbackMessage"]
+    );
 
     // 初期処理
     (async () => {
@@ -57,7 +77,7 @@ export default {
       Object.assign(profile, store.getters["profile/data"]);
     })();
 
-    return { profile, update };
+    return { invalidFeedbackMessage, invalidClassValue, profile, update };
   },
 };
 </script>

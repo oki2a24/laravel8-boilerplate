@@ -12,9 +12,12 @@ const getters = {
   exists: (state) => {
     return Object.keys(state.data).length > 0;
   },
-  isInvalid: (state) => (errorsKey) => {
+  hasInvalid: (state) => {
     const errors = state.error?.errors ?? {};
-    return Object.keys(errors).some((element) => element === errorsKey);
+    return Object.keys(errors).length > 0;
+  },
+  invalidClassValue: (state) => (errorsKey) => {
+    return state.error?.errors?.[errorsKey] ? "is-invalid" : "";
   },
   invalidFeedbackMessage: (state) => (errorsKey) => {
     return state.error?.errors?.[errorsKey]?.reduce((pre, cur) => {
@@ -34,6 +37,17 @@ const actions = {
       return;
     }
     await dispatch("get");
+  },
+  async update({ commit }, data) {
+    await axios
+      .put("api/user/profile-information", data)
+      .then((response) => {
+        commit("setData", response.data);
+        commit("setError", {});
+      })
+      .catch((error) => {
+        commit("setError", error.response.data);
+      });
   },
 };
 const mutations = {
