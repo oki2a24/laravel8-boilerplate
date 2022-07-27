@@ -51,6 +51,9 @@ const actions = {
   },
 };
 const mutations = {
+  resetError(state) {
+    state.error = {};
+  },
   setData(state, data) {
     state.data = data;
   },

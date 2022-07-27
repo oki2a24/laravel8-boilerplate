@@ -72,6 +72,7 @@ export default {
     );
 
     // 初期処理
+    store.commit("profile/resetError");
     (async () => {
       await store.dispatch("profile/getIfNeeded");
       Object.assign(profile, store.getters["profile/data"]);
