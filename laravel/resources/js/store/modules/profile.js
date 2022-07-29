@@ -49,6 +49,16 @@ const actions = {
         commit("setError", error.response.data);
       });
   },
+  async updatePassword({ commit }, data) {
+    await axios
+      .put("api/user/password", data)
+      .then(() => {
+        commit("setError", {});
+      })
+      .catch((error) => {
+        commit("setError", error.response.data);
+      });
+  },
 };
 const mutations = {
   resetError(state) {

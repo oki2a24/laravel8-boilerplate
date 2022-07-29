@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import ProfileTab from "../views/profile/Tab.vue";
 import ProfileEditGeneral from "../views/profile/EditGeneral.vue";
+import ProfileEditPassword from "../views/profile/EditPassword.vue";
 import ProfileShowGeneral from "../views/profile/ShowGeneral.vue";
 import ProfileShowPassword from "../views/profile/ShowPassword.vue";
 import UsersIndex from "../views/users/Index.vue";
@@ -35,6 +36,11 @@ const routes = [
             path: "password",
             name: "ProfileShowPassword",
             component: ProfileShowPassword,
+          },
+          {
+            path: "password/edit",
+            name: "ProfileEditPassword",
+            component: ProfileEditPassword,
           },
         ],
       },
